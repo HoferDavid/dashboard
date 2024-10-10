@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Widget } from '../interfaces/widget';
 import { SubscribersComponent } from '../components/pages/dashboard/widgets/subscribers/subscribers.component';
 import { ViewsComponent } from '../components/pages/dashboard/widgets/views/views.component';
@@ -17,6 +17,17 @@ export class DashboardService {
       content: ViewsComponent,
     },
   ]);
+
+  addedWidgets = signal<Widget[]>([]);
+
+  widgetsToAdd = computed(() => {
+    const addedIds = this.addedWidgets().map((w) => w.id);
+    return this.widgets().filter((w) => !addedIds.includes(w.id));
+  });
+
+  addWidget(w: Widget) {
+    this.addedWidgets.set([...this.addedWidgets(), { ...w }]);
+  }
 
   constructor() {}
 }

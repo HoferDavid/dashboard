@@ -1,3 +1,19 @@
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+        margin: 0;
+    }
+}
+
 .dashboard-widgets {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
