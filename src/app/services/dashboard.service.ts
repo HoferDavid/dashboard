@@ -57,5 +57,32 @@ export class DashboardService {
     }
   }
 
+  moveWidgetToRight(id: number) {
+    const index = this.addedWidgets().findIndex((w) => w.id === id);
+    if (index === this.addedWidgets().length - 1) {
+      console.log('test');
+      
+      return;
+    }
+
+    const newWidgets = [...this.addedWidgets()];
+    [newWidgets[index], newWidgets[index + 1]] = [{ ...newWidgets[index + 1] }, { ...newWidgets[index] }];
+
+    this.addedWidgets.set(newWidgets);
+  }
+
+
+  moveWidgetToLeft(id: number) {
+    const index = this.addedWidgets().findIndex((w) => w.id === id);
+    if (index === 0) {
+      return;
+    }
+
+    const newWidgets = [...this.addedWidgets()];
+    [newWidgets[index], newWidgets[index - 1]] = [{ ...newWidgets[index - 1] }, { ...newWidgets[index] }];
+
+    this.addedWidgets.set(newWidgets);
+  }
+
   constructor() {}
 }

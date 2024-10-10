@@ -1,4 +1,4 @@
-import { Component, inject, input, Input, model } from '@angular/core';
+import { Component, inject, input, model } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
