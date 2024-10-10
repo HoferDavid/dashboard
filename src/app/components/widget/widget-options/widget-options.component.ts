@@ -1,21 +1,17 @@
-import { Component, inject, input, Input, model } from '@angular/core';
+import { Component, Input, model } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { Widget } from '../../../interfaces/dashboard';
-import { DashboardService } from '../../../services/dashboard.service';
+import { Widget } from '../../../interfaces/widget';
 
 @Component({
   selector: 'app-widget-options',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatButtonToggleModule, MatIcon],
+  imports: [MatButtonModule, MatIconModule, MatButtonToggleModule],
   templateUrl: './widget-options.component.html',
   styleUrl: './widget-options.component.scss',
 })
 export class WidgetOptionsComponent {
-  data = input.required<Widget>();
-
+  // @Input() data!: Widget;
   showOptions = model<boolean>(false);
-
-  store = inject(DashboardService);
 }
