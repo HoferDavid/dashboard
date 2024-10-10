@@ -1,14 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
 :host {
   display: block;
   border-radius: 1rem;
 }
 
 .container {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    border-radius: inherit;
-    overflow: hidden;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  padding: 10px;
 }
 
 .label {
