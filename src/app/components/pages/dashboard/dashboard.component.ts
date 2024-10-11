@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { wrapGrid } from 'animate-css-grid';
-import { CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +20,19 @@ export class DashboardComponent implements OnInit {
 
   dashboard = viewChild.required<ElementRef>('dashboard');
 
+  clearAnimations = () => {};
+
   ngOnInit(): void {
-    wrapGrid(this.dashboard().nativeElement, { duration: 300 });
+    const { unwrapGrid } = wrapGrid(this.dashboard().nativeElement, { duration: 300 });
+    this.clearAnimations = unwrapGrid;
+  }
+
+  ngOnDestroy(): void {
+    this.clearAnimations();
+  }
+
+  drop(event: CdkDragDrop<number, any>) {
+    const { previousContainer, container } = event;
+    this.store.updateWidgetPosition(previousContainer.data, container.data);
   }
 }

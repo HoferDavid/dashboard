@@ -17,7 +17,7 @@
 
   <div #dashboard class="dashboard-widgets" cdkDropListGroup>
     @for (widget of store.addedWidgets(); track widget.id) {
-    <app-widget cdkDropList [data]="widget" />
+    <app-widget cdkDropList [data]="widget" (cdkDropListDropped)="drop($event)" [cdkDropListData]="widget.id" />
     }
   </div>
 
