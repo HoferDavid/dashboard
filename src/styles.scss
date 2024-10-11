@@ -17,3 +17,9 @@ body {
 .text-green {
     color: $text-green;
 }
+
+.cdk-drop-list-dragging {
+  opacity: 0.5;
+  border-left: 5px solid #000;
+  padding-left: 0.5rem;
+}

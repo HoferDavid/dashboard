@@ -5,11 +5,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { wrapGrid } from 'animate-css-grid';
+import { CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [WidgetComponent, MatButtonModule, MatIconModule, MatMenuModule],
+  imports: [WidgetComponent, MatButtonModule, MatIconModule, MatMenuModule, CdkDropList, CdkDropListGroup],
   providers: [DashboardService],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
