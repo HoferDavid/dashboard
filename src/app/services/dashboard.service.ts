@@ -4,6 +4,7 @@ import { SubscribersComponent } from '../components/pages/dashboard/widgets/subs
 import { ViewsComponent } from '../components/pages/dashboard/widgets/views/views.component';
 import { WatchTimeComponent } from '../components/pages/dashboard/widgets/watch-time/watch-time.component';
 import { RevenueComponent } from '../components/pages/dashboard/widgets/revenue/revenue.component';
+import { AnalyticsComponent } from '../components/pages/dashboard/widgets/analytics/analytics.component';
 
 @Injectable()
 export class DashboardService {
@@ -43,6 +44,13 @@ export class DashboardService {
       columns: 1,
       backgroundColor: '#003f5c',
       color: 'whitesmoke',
+    },
+    {
+      id: 5,
+      label: 'Channel Analytics',
+      content: AnalyticsComponent,
+      rows: 2,
+      columns: 2,
     },
   ]);
 
