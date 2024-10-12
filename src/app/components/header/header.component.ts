@@ -18,7 +18,9 @@ export class HeaderComponent {
   darkMode = signal(false);
 
   setDarkMode = effect(() => {
-    document.documentElement.classList.toggle('dark', this.darkMode());
+    if (typeof document !== 'undefined') {
+      document.documentElement.classList.toggle('dark', this.darkMode())
+    }
   })
 
   toggleSidenav(): void {
