@@ -4,7 +4,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DashboardService } from '../../../../services/dashboard.service';
 import { MatButtonModule } from '@angular/material/button';
 import { WidgetsPanelComponent } from '../widgets-panel/widgets-panel.component';
-import { CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dashboard-header',
@@ -14,7 +14,7 @@ import { CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
     MatMenuModule,
     MatButtonModule,
     WidgetsPanelComponent,
-    CdkDropList,
+    CdkDropList, CdkDrag
   ],
   providers: [DashboardService],
   templateUrl: './dashboard-header.component.html',
