@@ -5,8 +5,9 @@
   </div>
 
   @for (widget of store.widgetsToAdd(); track widget.id) {
-    <div class="widget-box">
+    <div class="widget-box" cdkDrag [cdkDragData]="widget.id">
         {{ widget.label }}
+        <div *cdkDragPlaceholder></div>
     </div>
   }
 </div>

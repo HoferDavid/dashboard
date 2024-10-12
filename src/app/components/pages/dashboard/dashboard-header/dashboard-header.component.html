@@ -9,6 +9,6 @@
   </button>
 
   @if (widgetsOpen()) {
-  <app-widgets-panel />
+  <app-widgets-panel cdkDropList (cdkDropListDropped)="widgetPutBack($event)"/>
   }
 </div>

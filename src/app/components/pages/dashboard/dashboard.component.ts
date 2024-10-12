@@ -1,20 +1,38 @@
-import { Component, ElementRef, inject, OnInit, viewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  inject,
+  OnInit,
+  viewChild,
+} from '@angular/core';
 import { WidgetComponent } from '../../widget/widget.component';
 import { DashboardService } from '../../../services/dashboard.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { wrapGrid } from 'animate-css-grid';
-import { CdkDragDrop, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
-import { DashboardHeaderComponent } from "./dashboard-header/dashboard-header.component";
+import {
+  CdkDragDrop,
+  CdkDropList,
+  CdkDropListGroup,
+} from '@angular/cdk/drag-drop';
+import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [WidgetComponent, MatButtonModule, MatIconModule, MatMenuModule, CdkDropList, CdkDropListGroup, DashboardHeaderComponent],
+  imports: [
+    WidgetComponent,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    CdkDropList,
+    CdkDropListGroup,
+    DashboardHeaderComponent,
+  ],
   providers: [DashboardService],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit {
   store = inject(DashboardService);
@@ -24,7 +42,9 @@ export class DashboardComponent implements OnInit {
   clearAnimations = () => {};
 
   ngOnInit(): void {
-    const { unwrapGrid } = wrapGrid(this.dashboard().nativeElement, { duration: 300 });
+    const { unwrapGrid } = wrapGrid(this.dashboard().nativeElement, {
+      duration: 300,
+    });
     this.clearAnimations = unwrapGrid;
   }
 
@@ -32,8 +52,19 @@ export class DashboardComponent implements OnInit {
     this.clearAnimations();
   }
 
+  // drop(event: CdkDragDrop<number, any>) {
+  //   const { previousContainer, container } = event;
+  //   this.store.updateWidgetPosition(previousContainer.data, container.data);
+  // }
+
   drop(event: CdkDragDrop<number, any>) {
-    const { previousContainer, container } = event;
+    const { previousContainer, container, item: { data } } = event;
+
+    if (data) {
+      this.store.insertWidgetAtPosition(data, container.data);
+      return;
+    }
+
     this.store.updateWidgetPosition(previousContainer.data, container.data);
   }
 }

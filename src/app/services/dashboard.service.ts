@@ -104,6 +104,20 @@ export class DashboardService {
     this.addedWidgets.set(this.addedWidgets().filter((w) => w.id !== id));
   }
 
+  insertWidgetAtPosition(sourceWidgetId: number, destWidgetId: number) {
+    const widgetToAdd = this.widgetsToAdd().find((w) => w.id === sourceWidgetId);
+    if (!widgetToAdd) {
+      return;
+    }
+
+    const indexOfDestWidget = this.addedWidgets().findIndex(w => w.id === destWidgetId);
+    const positionToAdd = indexOfDestWidget === -1 ? this.addedWidgets().length : indexOfDestWidget;
+
+    const newWidgets = [...this.addedWidgets()];
+    newWidgets.splice(positionToAdd, 0, widgetToAdd);
+    this.addedWidgets.set(newWidgets);
+  }
+
   saveWidgets = effect(() => {
     const widgetsWithoutContent: Partial<Widget>[] = this.addedWidgets().map(
       (w) => ({ ...w })
@@ -132,7 +146,9 @@ export class DashboardService {
   }
 
   updateWidgetPosition(sourceWidgetId: number, targetWidgetId: number) {
-    const sourceIndex = this.addedWidgets().findIndex((w) => w.id === sourceWidgetId);
+    const sourceIndex = this.addedWidgets().findIndex(
+      (w) => w.id === sourceWidgetId
+    );
     if (sourceIndex === -1) {
       return;
     }
@@ -145,7 +161,8 @@ export class DashboardService {
       return;
     }
 
-    const insertAt = targetIndex === sourceIndex ? targetIndex + 1 : targetIndex;
+    const insertAt =
+      targetIndex === sourceIndex ? targetIndex + 1 : targetIndex;
 
     newWidgets.splice(insertAt, 0, sourceWidget);
     this.addedWidgets.set(newWidgets);

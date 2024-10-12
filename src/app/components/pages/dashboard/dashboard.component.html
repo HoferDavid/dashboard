@@ -1,7 +1,7 @@
-<section>
+<section cdkDropListGroup>
   <app-dashboard-header />
 
-  <div #dashboard class="dashboard-widgets" cdkDropListGroup>
+  <div #dashboard class="dashboard-widgets">
     @for (widget of store.addedWidgets(); track widget.id) {
     <app-widget
       cdkDropList
@@ -10,5 +10,6 @@
       [cdkDropListData]="widget.id"
     />
     }
+    <div cdkDropList></div>
   </div>
 </section>
