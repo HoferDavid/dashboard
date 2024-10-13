@@ -60,14 +60,8 @@ export class DashboardComponent implements OnInit {
   //   this.store.updateWidgetPosition(previousContainer.data, container.data);
   // }
 
-
-
   drop(event: CdkDragDrop<number, any>) {
-    const {
-      previousContainer,
-      container,
-      item: { data },
-    } = event;
+    const { previousContainer, container, item: { data } } = event;
 
     if (data) {
       this.store.insertWidgetAtPosition(data, container.data);
