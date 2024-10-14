@@ -1,11 +1,11 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { SidenavService } from '../../services/sidenav.service';
+import { SidenavService } from '../../../services/sidenav.service';
 
 export type MenuItem = {
   icon: string;
@@ -39,7 +39,9 @@ export type MenuItem = {
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-  constructor(public sidenavService: SidenavService) {}
+  constructor() {}
+
+  sidenavService = inject(SidenavService);
 
   menuItems = signal<MenuItem[]>([
     {
