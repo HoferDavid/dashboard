@@ -7,7 +7,6 @@ import { CdkDrag, CdkDragPlaceholder } from '@angular/cdk/drag-drop';
   selector: 'app-widgets-panel',
   standalone: true,
   imports: [MatIconModule, MatIcon, CdkDrag, CdkDragPlaceholder],
-  providers: [DashboardService],
   templateUrl: './widgets-panel.component.html',
   styleUrl: './widgets-panel.component.scss',
 })

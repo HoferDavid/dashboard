@@ -16,7 +16,6 @@ import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
     WidgetsPanelComponent,
     CdkDropList, CdkDrag
   ],
-  providers: [DashboardService],
   templateUrl: './dashboard-header.component.html',
   styleUrl: './dashboard-header.component.scss',
 })
@@ -26,12 +25,7 @@ export class DashboardHeaderComponent {
   widgetsOpen = signal(false);
 
   widgetPutBack(event: CdkDragDrop<number, any>) {
-    const { previousContainer, container, item: { data } } = event;
-
-    if (data) {
-      this.store.insertWidgetAtPosition(data, container.data);
-      return;
-    }
+    const { previousContainer } = event;
 
     this.store.removeWidget(previousContainer.data);
   }

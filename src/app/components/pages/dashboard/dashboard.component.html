@@ -10,6 +10,6 @@
       [cdkDropListData]="widget.id"
     />
     }
-    <div cdkDropList></div>
+    <div cdkDropList (cdkDropListDropped)="drop($event)"></div>
   </div>
 </section>

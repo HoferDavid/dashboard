@@ -52,16 +52,12 @@ export class DashboardComponent implements OnInit {
     this.clearAnimations();
   }
 
-  // drop(event: CdkDragDrop<number, any>) {
-  //   const { previousContainer, container } = event;
-
-  //   console.log('Dragged widget ID:', event);
-
-  //   this.store.updateWidgetPosition(previousContainer.data, container.data);
-  // }
-
   drop(event: CdkDragDrop<number, any>) {
-    const { previousContainer, container, item: { data } } = event;
+    const {
+      previousContainer,
+      container,
+      item: { data },
+    } = event;
 
     if (data) {
       this.store.insertWidgetAtPosition(data, container.data);
@@ -71,3 +67,11 @@ export class DashboardComponent implements OnInit {
     this.store.updateWidgetPosition(previousContainer.data, container.data);
   }
 }
+
+// drop(event: CdkDragDrop<number, any>) {
+//   const { previousContainer, container } = event;
+
+//   console.log('Dragged widget ID:', event);
+
+//   this.store.updateWidgetPosition(previousContainer.data, container.data);
+// }
